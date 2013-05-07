@@ -3,3 +3,5 @@ project/project/*
 project/target/*
 
 gen-py/labsdirector/**.pyc
+*.pyc
+.ropeproject

@@ -10,11 +10,11 @@ object ThriftServer {
   def main(args: Array[String]) {
     // Implement the Thrift Interface
     val processor = new LabsDirector.FutureIface {
-      def freeze(s: String): Future[Unit] = {
-      	println("Got FREEZE")
-      	Future.Unit
+      def hello(name: String): Future[Unit] = {
+        println("Hello Mr. " + name)
+        Future.Unit
+      }
     }
-}
 
     // Convert the Thrift Processor to a Finagle Service
     val service = new LabsDirector.FinagledService(processor, new TBinaryProtocol.Factory())
