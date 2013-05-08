@@ -17,19 +17,19 @@ except:
 
 
 
-class InstanceDoesNotExist(TException):
+class ThisIsSparta(TException):
   """
   Attributes:
-   - description
+   - message
   """
 
   thrift_spec = (
     None, # 0
-    (1, TType.STRING, 'description', None, None, ), # 1
+    (1, TType.STRING, 'message', None, None, ), # 1
   )
 
-  def __init__(self, description=None,):
-    self.description = description
+  def __init__(self, message=None,):
+    self.message = message
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -42,7 +42,7 @@ class InstanceDoesNotExist(TException):
         break
       if fid == 1:
         if ftype == TType.STRING:
-          self.description = iprot.readString();
+          self.message = iprot.readString();
         else:
           iprot.skip(ftype)
       else:
@@ -54,10 +54,10 @@ class InstanceDoesNotExist(TException):
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('InstanceDoesNotExist')
-    if self.description is not None:
-      oprot.writeFieldBegin('description', TType.STRING, 1)
-      oprot.writeString(self.description)
+    oprot.writeStructBegin('ThisIsSparta')
+    if self.message is not None:
+      oprot.writeFieldBegin('message', TType.STRING, 1)
+      oprot.writeString(self.message)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

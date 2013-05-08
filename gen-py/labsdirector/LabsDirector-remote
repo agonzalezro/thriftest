@@ -23,7 +23,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print 'Usage: ' + sys.argv[0] + ' [-h host[:port]] [-u url] [-f[ramed]] function [arg1 [arg2...]]'
   print ''
   print 'Functions:'
-  print '  void hello(string name)'
+  print '  string hello(string name)'
+  print '  void bye()'
   print ''
   sys.exit(0)
 
@@ -80,6 +81,12 @@ if cmd == 'hello':
     print 'hello requires 1 args'
     sys.exit(1)
   pp.pprint(client.hello(args[0],))
+
+elif cmd == 'bye':
+  if len(args) != 0:
+    print 'bye requires 0 args'
+    sys.exit(1)
+  pp.pprint(client.bye())
 
 else:
   print 'Unrecognized method %s' % cmd

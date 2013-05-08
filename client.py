@@ -3,6 +3,7 @@ sys.path.append('./gen-py')
 
 
 from labsdirector import LabsDirector
+from labsdirector.ttypes import ThisIsSparta
 
 from thrift import Thrift
 from thrift.transport import TSocket
@@ -11,6 +12,10 @@ from thrift.protocol import TBinaryProtocol
 
 
 try:
+    # This was not forgotten, it's to make an step by step demo :)
+    import ipdb
+    ipdb.set_trace()
+
     # Make socket
     transport = TSocket.TSocket('localhost', 9999)
 
@@ -26,9 +31,13 @@ try:
     # Connect!
     transport.open()
 
-    caca = client.hello("PyGrunn")
-    print "got %s" % "message"
+    response = client.hello("PyGrunn")
+
+    try:
+        client.bye()
+    except ThisIsSparta as exception:
+        print "We got this Exception from Scala: %s" % exception.message
 
     transport.close()
-except Thrift.TException, tx:
-    print "Exception: %s" % (tx.message)
+except Thrift.TException as exception:
+    print "This is an complete unexpected Exception: %s" % (exception.message)

@@ -1,10 +1,11 @@
 namespace java com.cloud9ers.director
 namespace rb director
 
-exception InstanceDoesNotExist {
-	1: string description
+exception ThisIsSparta {
+	1: string message
 }
 
 service LabsDirector {
-	void hello(1: string name) throws(1: InstanceDoesNotExist ex);
+	string hello(1: string name);
+    void bye() throws(1: ThisIsSparta ex);
 }

@@ -10,8 +10,14 @@ object ThriftServer {
   def main(args: Array[String]) {
     // Implement the Thrift Interface
     val processor = new LabsDirector.FutureIface {
-      def hello(name: String): Future[Unit] = {
+      def hello(name: String): Future[String] = {
         println("Hello Mr. " + name)
+        return Future("Hello from Scala")
+      }
+
+      @throws(classOf[ThisIsSparta])
+      def bye(): Future[Unit] = {
+        throw ThisIsSparta("End of the demo :(")
         Future.Unit
       }
     }
