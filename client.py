@@ -19,7 +19,6 @@ try:
     # Make socket
     transport = TSocket.TSocket('localhost', 9999)
 
-    # Buffering is critical. Raw sockets are very slow
     transport = TTransport.TFramedTransport(transport)
 
     # Wrap in a protocol
